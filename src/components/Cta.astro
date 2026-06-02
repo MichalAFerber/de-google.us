@@ -7,11 +7,15 @@ interface Props {
 }
 const { label, href, note, size = 'default' } = Astro.props;
 const big = size === 'large';
+
+// Match trailingSlash: 'always' so internal CTAs don't take a redirect hop.
+const isInternal = href.startsWith('/') && !href.includes('#') && !/\.[a-z0-9]+$/i.test(href);
+const url = isInternal && !href.endsWith('/') ? `${href}/` : href;
 ---
 
 <div class:list={['cta', { 'cta-center': big }]}>
   <a
-    href={href}
+    href={url}
     class:list={[
       'inline-flex items-center gap-2 rounded-lg bg-[var(--color-brand)] font-semibold text-white no-underline transition-colors hover:bg-[var(--color-brand-dark)]',
       big ? 'px-7 py-3.5 text-lg' : 'px-5 py-2.5 text-base',

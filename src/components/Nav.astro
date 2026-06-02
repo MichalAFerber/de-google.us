@@ -18,15 +18,15 @@ const isActive = (href: string) => (href === '/' ? path === '/' : path === href)
 
     <div class="flex items-center gap-1 text-sm sm:gap-2">
       <a href="/" class:list={["nav-link", { active: isActive('/') }]}>Home</a>
-      <a href="/illusion-of-choice" class:list={["nav-link", { active: isActive('/illusion-of-choice') }]}>Why</a>
-      <a href="/start-here" class:list={["nav-link", { active: isActive('/start-here') }]}>Start&nbsp;Here</a>
+      <a href="/illusion-of-choice/" class:list={["nav-link", { active: isActive('/illusion-of-choice') }]}>Why</a>
+      <a href="/start-here/" class:list={["nav-link", { active: isActive('/start-here') }]}>Start&nbsp;Here</a>
 
       <details class="guides relative">
         <summary class="nav-link cursor-pointer list-none select-none">Guides</summary>
         <ul class="absolute right-0 mt-2 w-64 rounded-md border border-[var(--color-rule)] bg-[var(--color-paper)] p-1 shadow-lg">
           {guides.map((g) => (
             <li>
-              <a href={`/${g.slug}`} class="block rounded px-3 py-2 text-[var(--color-ink)] no-underline hover:bg-[var(--color-rule)]/50">
+              <a href={`/${g.slug}/`} class="block rounded px-3 py-2 text-[var(--color-ink)] no-underline hover:bg-[var(--color-rule)]/50">
                 {g.data.title}
               </a>
             </li>
