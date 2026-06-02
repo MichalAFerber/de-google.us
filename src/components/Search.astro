@@ -1,0 +1,26 @@
+---
+// Pagefind UI. The /pagefind/ bundle is emitted by `pagefind --site dist` in the
+// build step, so these assets 404 in `astro dev` (search is inert there — expected).
+// `is:inline` keeps Vite from trying to resolve/bundle them at build time.
+---
+
+<div id="search" class="pf"></div>
+
+<link rel="stylesheet" href="/pagefind/pagefind-ui.css" />
+<script
+  is:inline
+  src="/pagefind/pagefind-ui.js"
+  onload="new PagefindUI({ element: '#search', showSubResults: true, showImages: false });"
+></script>
+
+<style>
+  .pf {
+    --pagefind-ui-primary: var(--color-brand);
+    --pagefind-ui-text: var(--color-ink);
+    --pagefind-ui-background: var(--color-paper);
+    --pagefind-ui-border: var(--color-rule);
+    --pagefind-ui-font: var(--font-sans);
+    --pagefind-ui-border-radius: 0.5rem;
+    width: 100%;
+  }
+</style>

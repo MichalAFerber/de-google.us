@@ -1,0 +1,71 @@
+---
+import { getCollection } from 'astro:content';
+
+// Guides dropdown = the tier-1 / tier-2 pages, in reading order.
+const guides = (await getCollection('pages'))
+  .filter((p) => p.data.tier === 'tier-1' || p.data.tier === 'tier-2')
+  .sort((a, b) => a.data.order - b.data.order);
+
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const isActive = (href: string) => (href === '/' ? path === '/' : path === href);
+---
+
+<nav class="border-b border-[var(--color-rule)] bg-[var(--color-paper)]/90 backdrop-blur sticky top-0 z-50">
+  <div class="mx-auto flex max-w-3xl flex-wrap items-center justify-between gap-x-4 gap-y-1 px-5 py-3">
+    <a href="/" class="font-display text-base font-bold tracking-wide text-[var(--color-brand-dark)] no-underline sm:text-lg">
+      de-google<span class="text-[var(--color-ink-muted)]">.us</span>
+    </a>
+
+    <div class="flex items-center gap-1 text-sm sm:gap-2">
+      <a href="/" class:list={["nav-link", { active: isActive('/') }]}>Home</a>
+      <a href="/illusion-of-choice" class:list={["nav-link", { active: isActive('/illusion-of-choice') }]}>Why</a>
+      <a href="/start-here" class:list={["nav-link", { active: isActive('/start-here') }]}>Start&nbsp;Here</a>
+
+      <details class="guides relative">
+        <summary class="nav-link cursor-pointer list-none select-none">Guides</summary>
+        <ul class="absolute right-0 mt-2 w-64 rounded-md border border-[var(--color-rule)] bg-[var(--color-paper)] p-1 shadow-lg">
+          {guides.map((g) => (
+            <li>
+              <a href={`/${g.slug}`} class="block rounded px-3 py-2 text-[var(--color-ink)] no-underline hover:bg-[var(--color-rule)]/50">
+                {g.data.title}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </details>
+    </div>
+  </div>
+</nav>
+
+<style>
+  .nav-link {
+    border-radius: 0.375rem;
+    padding: 0.35rem 0.6rem;
+    color: var(--color-ink-muted);
+    text-decoration: none;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  .nav-link:hover {
+    color: var(--color-brand);
+  }
+  .nav-link.active {
+    color: var(--color-brand-dark);
+  }
+  /* No-JS accessible dropdown via <details> */
+  .guides summary::-webkit-details-marker {
+    display: none;
+  }
+</style>
+
+<script>
+  // Close the Guides dropdown on outside-click / Escape.
+  document.querySelectorAll<HTMLDetailsElement>('details.guides').forEach((d) => {
+    document.addEventListener('click', (e) => {
+      if (d.open && !d.contains(e.target as Node)) d.open = false;
+    });
+    d.addEventListener('keydown', (e) => {
+      if ((e as KeyboardEvent).key === 'Escape') d.open = false;
+    });
+  });
+</script>

@@ -1,0 +1,157 @@
+@import "tailwindcss";
+
+/* ─────────────────────────────────────────────────────────────
+   Brand tokens — pulled over from the TGWAB family so de-google.us
+   reads as a sibling. Red (#c5282f) is the through-line; de-google.us
+   gets a slate accent for a little differentiation.
+   ───────────────────────────────────────────────────────────── */
+@theme {
+  --color-brand: #c5282f;
+  --color-brand-dark: #9e1f25;
+  --color-accent: #2f4858;
+
+  --color-ink: #1a1714;
+  --color-ink-muted: #5c554e;
+  --color-paper: #faf8f5;
+  --color-rule: #e6e0d8;
+
+  --font-display: "Cinzel", "Trajan Pro", Georgia, "Times New Roman", serif;
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --measure: 65ch;
+}
+
+html {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Prose — long-form reading is the whole job here.
+   ~65ch measure, generous leading, classical display headings.
+   ───────────────────────────────────────────────────────────── */
+.prose {
+  max-width: var(--measure);
+  margin-inline: auto;
+  font-size: 1.1875rem;
+  line-height: 1.75;
+  color: var(--color-ink);
+}
+
+.prose > * + * {
+  margin-top: 1.4em;
+}
+
+.prose p {
+  text-wrap: pretty;
+}
+
+.prose h2 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.6rem;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+  color: var(--color-brand-dark);
+  margin-top: 2.4em;
+  margin-bottom: 0;
+}
+
+.prose h3 {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 1.2rem;
+  line-height: 1.35;
+  color: var(--color-ink);
+  margin-top: 2em;
+  margin-bottom: 0;
+}
+
+.prose a {
+  color: var(--color-brand);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+  text-decoration-thickness: 1px;
+  font-weight: 500;
+}
+
+.prose a:hover {
+  color: var(--color-brand-dark);
+}
+
+.prose strong {
+  font-weight: 600;
+  color: var(--color-ink);
+}
+
+.prose ul {
+  padding-left: 1.4em;
+  list-style: none;
+}
+
+.prose ul li {
+  position: relative;
+}
+
+.prose ul li + li {
+  margin-top: 0.8em;
+}
+
+.prose ul li::before {
+  content: "";
+  position: absolute;
+  left: -1.1em;
+  top: 0.7em;
+  width: 0.4em;
+  height: 0.4em;
+  border-radius: 9999px;
+  background: var(--color-brand);
+}
+
+.prose ol {
+  padding-left: 1.4em;
+}
+
+.prose ol li + li {
+  margin-top: 0.8em;
+}
+
+.prose hr {
+  border: 0;
+  height: 0;
+  width: 6rem;
+  margin: 2.8em auto;
+  border-top: 2px solid var(--color-rule);
+}
+
+.prose blockquote {
+  border-left: 3px solid var(--color-brand);
+  padding-left: 1.2em;
+  font-style: italic;
+  color: var(--color-ink-muted);
+}
+
+/* Skip link for keyboard users */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--color-ink);
+  color: var(--color-paper);
+  padding: 0.6rem 1rem;
+  z-index: 100;
+}
+.skip-link:focus {
+  left: 0.5rem;
+  top: 0.5rem;
+}

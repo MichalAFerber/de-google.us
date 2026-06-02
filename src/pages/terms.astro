@@ -1,0 +1,36 @@
+---
+import Base from '../layouts/Base.astro';
+
+const title = 'Terms of Use';
+const description =
+  'The short version: this is one person sharing what he has learned. Everything is provided as-is, with no guarantees. Go at your own pace.';
+---
+
+<Base title={title} description={description}>
+  <article class="mx-auto max-w-3xl px-5 pb-20 pt-12 sm:pt-16">
+    <header class="mb-10">
+      <h1 class="text-balance font-display text-3xl font-bold leading-tight text-[var(--color-brand-dark)] sm:text-4xl">
+        {title}
+      </h1>
+    </header>
+
+    <div class="prose">
+      <p>
+        The short version: this is one person sharing what he’s learned. Take what’s useful,
+        leave the rest.
+      </p>
+
+      <ul>
+        <li><strong>It’s all as-is.</strong> Everything here is provided as-is, with no warranty of any kind. I’ve tried to be accurate and honest, but I can’t guarantee every step works perfectly for your exact setup.</li>
+        <li><strong>No guarantees.</strong> Following a guide here might not produce the result you expect — Big Tech changes its menus, settings, and policies constantly. Use your own judgment.</li>
+        <li><strong>Go at your own pace, at your own risk.</strong> Nothing here is urgent. There’s no clock. You’re responsible for your own accounts, your own data, and your own backups — back things up before you change them.</li>
+        <li><strong>Not professional advice.</strong> This isn’t legal, financial, or security consulting, even though I do IT for a living. For high-stakes situations, talk to someone you’re paying.</li>
+      </ul>
+
+      <p>
+        That’s it. Be careful, take your time, and don’t blow up your digital life on a
+        Saturday.
+      </p>
+    </div>
+  </article>
+</Base>

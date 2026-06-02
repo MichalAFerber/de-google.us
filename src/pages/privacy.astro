@@ -1,0 +1,49 @@
+---
+import Base from '../layouts/Base.astro';
+
+const title = 'Privacy Policy';
+const description =
+  "The de-Google site doesn't spy on you. No analytics, no cookies, no trackers, no third-party fonts. Here's exactly what that means.";
+---
+
+<Base title={title} description={description}>
+  <article class="mx-auto max-w-3xl px-5 pb-20 pt-12 sm:pt-16">
+    <header class="mb-10">
+      <h1 class="text-balance font-display text-3xl font-bold leading-tight text-[var(--color-brand-dark)] sm:text-4xl">
+        {title}
+      </h1>
+    </header>
+
+    <div class="prose">
+      <p>
+        The whole point of this site is to help you claw back a little privacy. It would be
+        pretty rich if the site itself spied on you. It doesn’t.
+      </p>
+
+      <ul>
+        <li><strong>No analytics.</strong> No Google Analytics, no Plausible, no Fathom, nothing counting your visits or building a profile.</li>
+        <li><strong>No cookies.</strong> The site sets none. Nothing is stored on your device, and nothing follows you around the web.</li>
+        <li><strong>No third-party fonts or trackers.</strong> Fonts are self-hosted, so your browser never phones Google to render this page. (It’s the de-Google site — that would be embarrassing.)</li>
+        <li><strong>Search runs on your machine.</strong> The search box uses Pagefind: it loads a static index and runs entirely in your browser. Your search queries never leave your device.</li>
+        <li><strong>No accounts, no forms, no email collection.</strong> There’s nothing here to sign up for, so there’s nothing for me to collect, sell, or lose.</li>
+      </ul>
+
+      <p>
+        The site is just static files served from a CDN. Like any website, the host that
+        delivers those files can see standard request data (an IP address, roughly when a page
+        was fetched) for the seconds it takes to serve the page — that’s how the internet
+        works. I don’t touch it, store it, or use it to track or profile anyone. There is no
+        database of you here, because there is no database of you anywhere on this site.
+      </p>
+
+      <p>If any of that ever changes, this page changes first.</p>
+
+      <hr />
+
+      <p>
+        Questions? Find me at
+        <a href="https://michalferber.me" target="_blank" rel="noopener">michalferber.me</a>.
+      </p>
+    </div>
+  </article>
+</Base>

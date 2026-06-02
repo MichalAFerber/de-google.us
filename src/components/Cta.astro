@@ -1,0 +1,33 @@
+---
+interface Props {
+  label: string;
+  href: string;
+  note?: string;
+  size?: 'default' | 'large';
+}
+const { label, href, note, size = 'default' } = Astro.props;
+const big = size === 'large';
+---
+
+<div class:list={['cta', { 'cta-center': big }]}>
+  <a
+    href={href}
+    class:list={[
+      'inline-flex items-center gap-2 rounded-lg bg-[var(--color-brand)] font-semibold text-white no-underline transition-colors hover:bg-[var(--color-brand-dark)]',
+      big ? 'px-7 py-3.5 text-lg' : 'px-5 py-2.5 text-base',
+    ]}
+  >
+    {label}
+    <span aria-hidden="true">→</span>
+  </a>
+  {note && <p class="mt-3 text-sm italic text-[var(--color-ink-muted)]">{note}</p>}
+</div>
+
+<style>
+  .cta {
+    margin-top: 2.5rem;
+  }
+  .cta-center {
+    text-align: center;
+  }
+</style>
