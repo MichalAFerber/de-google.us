@@ -10,12 +10,13 @@ import Search from './Search.astro';
     </div>
 
     <div class="flex flex-col gap-3 border-t border-[var(--color-rule)] pt-6 text-sm text-[var(--color-ink-muted)] sm:flex-row sm:items-center sm:justify-between">
-      <p>
+      <p class="flex flex-wrap items-center gap-x-2 gap-y-1">
         <a href="/what-i-couldnt-leave/" class="text-[var(--color-ink)] underline underline-offset-2 hover:text-[var(--color-brand)]">
           What I couldn’t leave
         </a>
-        <span class="mx-2 opacity-40">·</span>
-        the honest version, from someone who does this for a living
+        <span class="rounded bg-brand/10 px-1.5 py-0.5 font-mono text-xs text-[var(--color-ink)]">
+          the honest version, from someone who does this for a living
+        </span>
       </p>
       <nav class="flex items-center gap-2" aria-label="Legal">
         <a href="/privacy/" class="underline underline-offset-2 hover:text-[var(--color-brand)]">Privacy</a>
@@ -24,7 +25,7 @@ import Search from './Search.astro';
       </nav>
     </div>
 
-    <p class="mt-6 border-t border-[var(--color-rule)] pt-6 text-sm text-[var(--color-ink-muted)]">
+    <p class="mt-6 text-center text-sm text-[var(--color-ink-muted)]">
       &copy; 2026 | Created with <i class="icon-heart" title="Love"></i> by
       <a href="https://michalferber.me" target="_blank" rel="noopener" class="text-[var(--color-ink)] underline underline-offset-2 hover:text-[var(--color-brand)]">Michal Ferber, aka TechGuyWithABeard</a>
     </p>
