@@ -1,0 +1,28 @@
+---
+import Base from '../layouts/Base.astro';
+
+const title = 'Page not found';
+const description = "That page doesn't exist — maybe it moved, maybe it never did.";
+---
+
+<Base title={title} description={description}>
+  <section class="mx-auto max-w-3xl px-5 pb-20 pt-16 text-center sm:pt-24">
+    <p class="mb-3 font-mono text-sm uppercase tracking-wide text-[var(--color-brand)]">404</p>
+    <h1 class="mb-6 text-balance font-display text-3xl font-bold leading-tight text-[var(--color-brand-dark)] sm:text-4xl">
+      Nothing lives at this address
+    </h1>
+
+    <div class="prose mx-auto text-left">
+      <p>
+        The page you’re after doesn’t exist — maybe it moved, maybe it never did. This site was
+        rebuilt from the ground up, so an old bookmark or search result might have pointed you
+        somewhere that’s no longer here. No harm done.
+      </p>
+      <p>Two good ways back in:</p>
+      <ul>
+        <li><a href="/">Start at the beginning</a> — why you didn’t really pick Google.</li>
+        <li><a href="/start-here/">Skip to the one change worth making</a> — if you just want to do something today.</li>
+      </ul>
+    </div>
+  </section>
+</Base>
