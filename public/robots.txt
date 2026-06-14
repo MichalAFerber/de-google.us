@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://de-google.us/sitemap-index.xml

@@ -1,4 +1,5 @@
 import { defineConfig } from 'astro/config';
+import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 
 // Add a trailing slash to internal markdown links so they match `trailingSlash:
@@ -30,6 +31,7 @@ export default defineConfig({
   markdown: {
     rehypePlugins: [trailingSlashLinks],
   },
+  integrations: [sitemap()],
   vite: {
     plugins: [tailwindcss()],
   },
