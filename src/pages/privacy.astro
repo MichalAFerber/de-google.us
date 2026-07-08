@@ -3,7 +3,7 @@ import Base from '../layouts/Base.astro';
 
 const title = 'Privacy Policy';
 const description =
-  "The de-Google site doesn't spy on you. No analytics, no cookies, no trackers, no third-party fonts. Here's exactly what that means.";
+  "The de-Google site doesn't spy on you. No Google Analytics, no cookies, no trackers — just anonymous, self-hosted page counts. Here's exactly what that means.";
 ---
 
 <Base title={title} description={description}>
@@ -21,9 +21,17 @@ const description =
       </p>
 
       <ul>
-        <li><strong>No analytics.</strong> No Google Analytics, no Plausible, no Fathom, nothing counting your visits or building a profile.</li>
-        <li><strong>No cookies.</strong> The site sets none. Nothing is stored on your device, and nothing follows you around the web.</li>
-        <li><strong>No third-party fonts or trackers.</strong> Fonts are self-hosted, so your browser never phones Google to render this page. (It’s the de-Google site — that would be embarrassing.)</li>
+        <li><strong>No Google Analytics. Ever.</strong> I do count page views, using
+          <a href="https://plausible.io/data-policy" target="_blank" rel="noopener">Plausible</a>,
+          running on a server I own at <code>plausible.thompsonblack.us</code>. It sets no cookies,
+          stores no IP addresses, doesn’t fingerprint you, and can’t follow you to other sites. It
+          tells me a page got read — never who read it. That’s the whole extent of it.</li>
+        <li><strong>No cookies.</strong> The site sets none, and neither does the analytics. Nothing
+          is stored on your device, and nothing follows you around the web.</li>
+        <li><strong>No third-party fonts or trackers.</strong> Fonts are self-hosted, so your browser
+          never phones Google to render this page. The only request that leaves this site is that
+          anonymous page count, and it goes to my own server — not an ad company. (It’s the de-Google
+          site — anything else would be embarrassing.)</li>
         <li><strong>Search runs on your machine.</strong> The search box uses Pagefind: it loads a static index and runs entirely in your browser. Your search queries never leave your device.</li>
         <li><strong>No accounts, no forms, no email collection.</strong> There’s nothing here to sign up for, so there’s nothing for me to collect, sell, or lose.</li>
       </ul>

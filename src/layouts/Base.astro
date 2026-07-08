@@ -37,6 +37,14 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta name="twitter:card" content="summary" />
+
+    <!-- Self-hosted Plausible: cookieless, no personal data, no Google Analytics.
+         Kept honest in /privacy. `is:inline` so Vite leaves the external src alone. -->
+    <script
+      is:inline
+      defer
+      data-domain="de-google.us"
+      src="https://plausible.thompsonblack.us/js/script.js"></script>
   </head>
   <body>
     <a href="#main" class="skip-link">Skip to content</a>
