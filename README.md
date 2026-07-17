@@ -64,9 +64,10 @@ Per the standards sheet, deviations get their justification here:
   register for long-form reading; brand red `#c5282f` remains the through-line.
 - **Footer credit links to michalferber.me as a single link** — owner-directed
   wording for this site.
-- **No Octocat header/footer chrome (yet)** — the header is deliberately quiet;
-  the repo is public and linked here. Under review.
 - **No CI harness yet** — tracked as follow-up work, not skipped by intent.
+
+**Repo class:** A (open source) — public, MIT, Octocat repo links in header and
+footer per the standards sheet.
 
 ## Credits
 
