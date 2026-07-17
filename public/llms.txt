@@ -1,0 +1,23 @@
+# de-google.us
+
+> A warm, plain-English guide to limiting Big Tech without blowing up your
+> life — written first-person by an IT-company owner and Microsoft Partner who
+> admits he couldn't fully leave Google or Apple either. Not a manifesto: the
+> goal is turning every default into a decision, keeping what's load-bearing
+> and leaving what's cheap to leave.
+
+## Reading path
+
+- [Home](https://de-google.us/): You didn't pick Google — the phone store did
+- [The Illusion of Choice](https://de-google.us/illusion-of-choice/): the cattle-chute thesis
+- [Start Here](https://de-google.us/start-here/): the one change worth more than all the others
+- [Reclaim Your Logins](https://de-google.us/reclaim-your-logins/): triage the accounts you already gave away
+- [The Three Landlords](https://de-google.us/the-three-landlords/): Google watches, Apple pampers, Microsoft employs
+- [Cheap vs. Load-Bearing](https://de-google.us/cheap-vs-load-bearing/): the whole site in one idea
+- [Move Your Inbox](https://de-google.us/move-your-inbox/): Gmail → Proton, the careful way
+
+## About
+
+- [What I Couldn't Leave](https://de-google.us/what-i-couldnt-leave/): the credibility page
+- [Privacy Policy](https://de-google.us/privacy/): no cookies, no trackers, self-hosted anonymous page counts
+- [Source code](https://github.com/MichalAFerber/de-google.us): MIT-licensed, Astro 5 + Tailwind 4 + Pagefind

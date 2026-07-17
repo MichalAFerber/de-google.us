@@ -20,23 +20,58 @@ interface Props {
 const { title, description } = Astro.props;
 const fullTitle = title.includes('de-google.us') ? title : `${title} · de-google.us`;
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const ogImage = new URL('/og.png', Astro.site).href;
+
+const jsonLd = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'de-google.us',
+  url: Astro.site?.href,
+  description: 'A plain-English guide to limiting Big Tech without blowing up your life.',
+  publisher: { '@type': 'Person', name: 'Michal Ferber', url: 'https://michalferber.me' },
+});
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Pre-paint theme: apply a persisted override before first render (no flash).
+         Without a stored choice, CSS follows prefers-color-scheme on its own. -->
+    <script is:inline>
+      try {
+        const t = localStorage.getItem('theme');
+        if (t === 'dark' || t === 'light') document.documentElement.dataset.theme = t;
+      } catch {}
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#faf8f5" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#1a1613" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
 
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="de-google.us" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
-    <meta name="twitter:card" content="summary" />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="de-google.us — You didn't pick Google. The phone store did." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:creator" content="@michalaferber" />
+
+    <script type="application/ld+json" is:inline set:html={jsonLd} />
 
     <!-- Self-hosted Plausible: cookieless, no personal data, no Google Analytics.
          Kept honest in /privacy. `is:inline` so Vite leaves the external src alone. -->
