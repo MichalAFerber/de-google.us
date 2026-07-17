@@ -10,6 +10,11 @@
   --color-brand-dark: #9e1f25;
   --color-accent: #2f4858;
 
+  /* Button fill/hover stay deep red in BOTH themes (white text needs the
+     depth); text/heading reds lift in dark mode for contrast instead. */
+  --color-btn: #c5282f;
+  --color-btn-hover: #9e1f25;
+
   --color-ink: #1a1714;
   --color-ink-muted: #5c554e;
   --color-paper: #faf8f5;
@@ -19,6 +24,48 @@
   --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
 
   --measure: 65ch;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Theme switching. Default follows the system; the header toggle
+   sets data-theme on <html> and persists it (see Base/Nav).
+   Dark is the same warm paper brand, inverted — espresso, not
+   void black; brand reds lift for text contrast on dark.
+   ───────────────────────────────────────────────────────────── */
+:root {
+  color-scheme: light;
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --color-brand: #e06c62;
+  --color-brand-dark: #d97b72;
+  --color-ink: #e9e3da;
+  --color-ink-muted: #a89f93;
+  --color-paper: #1a1613;
+  --color-rule: #383028;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    color-scheme: dark;
+    --color-brand: #e06c62;
+    --color-brand-dark: #d97b72;
+    --color-ink: #e9e3da;
+    --color-ink-muted: #a89f93;
+    --color-paper: #1a1613;
+    --color-rule: #383028;
+  }
+}
+
+/* Theme toggle icons: show the mode you'd switch TO. */
+.icon-sun { display: none; }
+.icon-moon { display: block; }
+:root[data-theme='dark'] .icon-sun { display: block; }
+:root[data-theme='dark'] .icon-moon { display: none; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) .icon-sun { display: block; }
+  :root:not([data-theme='light']) .icon-moon { display: none; }
 }
 
 html {
@@ -139,6 +186,31 @@ body {
   padding-left: 1.2em;
   font-style: italic;
   color: var(--color-ink-muted);
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Accessibility
+   ───────────────────────────────────────────────────────────── */
+a,
+button,
+summary {
+  -webkit-tap-highlight-color: transparent;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-brand);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 /* Skip link for keyboard users */

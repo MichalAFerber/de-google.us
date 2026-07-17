@@ -1,0 +1,3 @@
+# de-google.us runs no advertising and has no authorized programmatic sellers.
+# This file exists solely to prevent ad-inventory spoofing (IAB ads.txt spec).
+# If you see de-google.us inventory offered for sale anywhere, it is fraudulent.
