@@ -62,9 +62,11 @@ Per the standards sheet, deviations get their justification here:
   license-clean stand-in. Swap via `--font-display` in `src/styles/global.css`.
 - **Warm paper palette, not "bold and bright"** — deliberate anti-manifesto
   register for long-form reading; brand red `#c5282f` remains the through-line.
-- **Footer credit links to michalferber.me as a single link** — owner-directed
-  wording for this site.
-- **No CI harness yet** — tracked as follow-up work, not skipped by intent.
+
+Everything else follows the sheet: exact ❤️ footer credit (build-time year),
+Octocat header + footer, and CI (§15) — GitHub Actions runs type-check, build,
+and a headless-Chromium Playwright harness that serves `dist/` under the real
+`_headers` CSP on every PR (`scripts/serve-with-csp.mjs`, `tests/`).
 
 **Repo class:** A (open source) — public, MIT, Octocat repo links in header and
 footer per the standards sheet.
