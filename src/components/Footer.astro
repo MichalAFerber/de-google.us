@@ -1,5 +1,8 @@
 ---
 import Search from './Search.astro';
+
+// Rendered at build time so the year never goes stale (§1).
+const year = new Date().getFullYear();
 ---
 
 <footer class="mt-auto border-t border-[var(--color-rule)] bg-[var(--color-paper)]">
@@ -38,19 +41,7 @@ import Search from './Search.astro';
     </div>
 
     <p class="mt-6 text-center text-sm text-[var(--color-ink-muted)]">
-      &copy; 2026 | Created with <i class="icon-heart" title="Love"></i> by
-      <a href="https://michalferber.me" target="_blank" rel="noopener" class="text-[var(--color-ink)] underline underline-offset-2 hover:text-[var(--color-brand)]">Michal Ferber, aka TechGuyWithABeard</a>
+      &copy; {year} | Created with <span aria-label="love">❤️</span> by <a href="https://michalferber.dev/" target="_blank" rel="noopener" class="text-[var(--color-ink)] underline underline-offset-2 hover:text-[var(--color-brand)]">Michal Ferber</a>, aka <a href="https://techguywithabeard.com/" target="_blank" rel="noopener" class="text-[var(--color-ink)] underline underline-offset-2 hover:text-[var(--color-brand)]">TechGuyWithABeard</a>.
     </p>
   </div>
 </footer>
-
-<style>
-  /* No icon font on this site (self-hosted, de-Googled) — render the heart inline. */
-  .icon-heart {
-    font-style: normal;
-  }
-  .icon-heart::before {
-    content: "\2665";
-    color: var(--color-brand);
-  }
-</style>

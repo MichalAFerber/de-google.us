@@ -8,6 +8,12 @@ node_modules/
 # pagefind
 src/content/**/.pagefind/
 
+# playwright
+test-results/
+playwright-report/
+/blob-report/
+.cache/
+
 # env / os
 .env
 .env.*
