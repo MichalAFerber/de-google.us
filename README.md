@@ -1,6 +1,6 @@
 # de-google.us
 
-**Live:** <https://de-google.us> · (also answers at `degoog.us` and `www`, both canonicalized to the apex)
+**Live:** <https://de-google.us> · (also answers at `degoog.us` and `www`, both canonicalized to the apex) · **Class A — open source, MIT** (§10)
 
 A warm, plain-English guide to limiting Big Tech without blowing up your life —
 written first-person by someone who runs an IT company, is a Microsoft Partner,
@@ -53,23 +53,17 @@ instance (`plausible.thompsonblack.us`) — cookieless, no IPs stored, disclosed
 plainly in [/privacy](https://de-google.us/privacy/). Search runs entirely in
 the visitor's browser.
 
-## Deviations from TGWAB Dev Standards
+Built to the TGWAB Dev Standards **v2.10.1** (internal).
 
-Per the standards sheet, deviations get their justification here:
+## Deviations
 
-- **Display face is Cinzel, not JetBrains Mono** — the build spec mandates the
-  brand's classical inscriptional serif (Trajan family); Cinzel is the
-  license-clean stand-in. Swap via `--font-display` in `src/styles/global.css`.
-- **Warm paper palette, not "bold and bright"** — deliberate anti-manifesto
-  register for long-form reading; brand red `#c5282f` remains the through-line.
+- §1 — JetBrains Mono display face — Cinzel stands in for the brand's classical inscriptional serif (license-clean Trajan family); swap via `--font-display` in `src/styles/global.css` — 2026-07-30 — permanent
+- §1 — "bold and bright" palette — warm paper register is the deliberate anti-manifesto choice for long-form reading; brand red `#c5282f` remains the through-line — 2026-07-30 — permanent
 
 Everything else follows the sheet: exact ❤️ footer credit (build-time year),
-Octocat header + footer, and CI (§15) — GitHub Actions runs type-check, build,
-and a headless-Chromium Playwright harness that serves `dist/` under the real
+Octocat header + footer, and CI (§15) — type-check, build, no-eval and mailto
+gates, and a headless-Chromium Playwright harness serving `dist/` under the real
 `_headers` CSP on every PR (`scripts/serve-with-csp.mjs`, `tests/`).
-
-**Repo class:** A (open source) — public, MIT, Octocat repo links in header and
-footer per the standards sheet.
 
 ## Credits
 

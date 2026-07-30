@@ -15,6 +15,14 @@ function collectConsoleErrors(page: Page): string[] {
 }
 
 test.beforeEach(async ({ page }) => {
+  // §15: assert the securitypolicyviolation DOM event itself — console text is
+  // not the gate ("expected console noise is a pass" is the hole §15 names).
+  await page.addInitScript(() => {
+    (window as any).__spv = [] as string[];
+    document.addEventListener('securitypolicyviolation', (e) =>
+      (window as any).__spv.push(`${e.violatedDirective}: ${e.blockedURI}`),
+    );
+  });
   // Stub the self-hosted Plausible script (analytics noise = expected pass).
   await page.route('**/plausible.thompsonblack.us/**', (route) =>
     route.fulfill({ status: 200, contentType: 'application/javascript', body: '' }),
@@ -33,6 +41,8 @@ test('home loads under production CSP, no unexpected console errors', async ({ p
   await page.waitForLoadState('networkidle');
   const violations = errors.filter(isCSPViolation);
   expect(violations, `CSP violations:\n${violations.join('\n')}`).toHaveLength(0);
+  const spv = await page.evaluate(() => (window as any).__spv as string[]);
+  expect(spv, `securitypolicyviolation events:\n${spv.join('\n')}`).toHaveLength(0);
   expect(errors, `Unexpected console errors:\n${errors.join('\n')}`).toHaveLength(0);
 });
 
