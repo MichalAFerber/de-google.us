@@ -58,6 +58,7 @@ Built to the TGWAB Dev Standards **v2.10.1** (internal).
 ## Deviations
 
 - §1 — JetBrains Mono display face — Cinzel stands in for the brand's classical inscriptional serif (license-clean Trajan family); swap via `--font-display` in `src/styles/global.css` — 2026-07-30 — permanent
+- §15 — audit gate at `--audit-level=high` — two `astro` advisories (GHSA-8hv8-536x-4wqp, GHSA-2pvr-wf23-7pc7) are patched only in Astro 6; ignored via `pnpm.auditConfig` pending the Astro 6 migration — 2026-07-30 — review 2026-09-01
 - §1 — "bold and bright" palette — warm paper register is the deliberate anti-manifesto choice for long-form reading; brand red `#c5282f` remains the through-line — 2026-07-30 — permanent
 
 Everything else follows the sheet: exact ❤️ footer credit (build-time year),
