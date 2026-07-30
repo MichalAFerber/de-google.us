@@ -1,3 +1,13 @@
 allowBuilds:
   esbuild: true
   sharp: true
+# §15: pin vulnerable transitives to their patched floors.
+overrides:
+  sharp: ">=0.35.0"
+  postcss: ">=8.5.18"
+# §15 deviation (see README): these two astro advisories are patched only in
+# Astro 6 — ignored pending the major migration, review 2026-09-01.
+auditConfig:
+  ignoreGhsas:
+    - GHSA-8hv8-536x-4wqp
+    - GHSA-2pvr-wf23-7pc7
