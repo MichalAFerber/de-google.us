@@ -1,11 +1,11 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, render } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import Cta from '../components/Cta.astro';
 
-const home = (await getCollection('pages')).find((p) => p.slug === 'index');
+const home = (await getCollection('pages')).find((p) => p.id === 'index');
 if (!home) throw new Error('index.md missing from src/content/pages');
-const { Content } = await home.render();
+const { Content } = await render(home);
 const { title, description, cta } = home.data;
 ---
 
