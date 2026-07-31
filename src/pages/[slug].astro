@@ -1,17 +1,17 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, render } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import Cta from '../components/Cta.astro';
 
 export async function getStaticPaths() {
   const pages = await getCollection('pages');
   return pages
-    .filter((p) => p.slug !== 'index') // home is rendered by index.astro
-    .map((page) => ({ params: { slug: page.slug }, props: { page } }));
+    .filter((p) => p.id !== 'index') // home is rendered by index.astro
+    .map((page) => ({ params: { slug: page.id }, props: { page } }));
 }
 
 const { page } = Astro.props;
-const { Content } = await page.render();
+const { Content } = await render(page);
 const { title, description, cta } = page.data;
 ---
 
