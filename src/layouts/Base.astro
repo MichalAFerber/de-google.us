@@ -18,7 +18,11 @@ interface Props {
   description: string;
 }
 const { title, description } = Astro.props;
-const fullTitle = title.includes('de-google.us') ? title : `${title} · de-google.us`;
+// Append the brand only when the result still fits a SERP title. The home page
+// title is already 54 characters; the suffix pushed it to 69 and Google
+// truncated it. Short page titles still get the brand, which is the point of it.
+const suffixed = `${title} · de-google.us`;
+const fullTitle = title.includes('de-google.us') || suffixed.length > 60 ? title : suffixed;
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
 const ogImage = new URL('/og.png', Astro.site).href;
 
