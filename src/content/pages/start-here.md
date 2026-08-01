@@ -1,5 +1,5 @@
 ---
-title: "Start Here: The One Change That's Worth More Than All the Others"
+title: "Start Here: The One Change Worth More Than All the Others"
 description: "If you do nothing else on this whole site, do this. No new email, no leaving your phone — just take the master key back."
 order: 2
 tier: "tier-0"
