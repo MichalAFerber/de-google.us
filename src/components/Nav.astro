@@ -16,7 +16,7 @@ const isActive = (href: string) => (href === '/' ? path === '/' : path === href)
       de-google<span class="text-[var(--color-ink-muted)]">.us</span>
     </a>
 
-    <div class="flex items-center gap-1 text-sm sm:gap-2">
+    <div class="flex flex-wrap items-center justify-end gap-1 text-sm sm:gap-2">
       <a href="/" class:list={["nav-link", { active: isActive('/') }]}>Home</a>
       <a href="/illusion-of-choice/" class:list={["nav-link", { active: isActive('/illusion-of-choice') }]}>Why</a>
       <a href="/start-here/" class:list={["nav-link", { active: isActive('/start-here') }]}>Start&nbsp;Here</a>
@@ -34,6 +34,7 @@ const isActive = (href: string) => (href === '/' ? path === '/' : path === href)
         </ul>
       </details>
 
+      <div class="flex items-center gap-1 sm:gap-2">
       <a
         href="https://github.com/MichalAFerber/de-google.us"
         target="_blank"
@@ -55,6 +56,7 @@ const isActive = (href: string) => (href === '/' ? path === '/' : path === href)
           <path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path>
         </svg>
       </button>
+      </div>
     </div>
   </div>
 </nav>

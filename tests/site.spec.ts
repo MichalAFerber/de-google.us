@@ -84,6 +84,21 @@ test('unknown route serves the branded 404 with a 404 status', async ({ page }) 
   await expect(page.locator('h1')).toContainText(/nothing lives at this address/i);
 });
 
+test('no horizontal overflow at mobile widths', async ({ page }) => {
+  // Regression: the nav link row used to have a fixed intrinsic width (~361px)
+  // that forced horizontal scroll on phones, shifting every page left.
+  for (const width of [320, 360, 390]) {
+    await page.setViewportSize({ width, height: 800 });
+    for (const path of ['/', '/start-here/', '/privacy/']) {
+      await page.goto(path);
+      const overflow = await page.evaluate(
+        () => document.documentElement.scrollWidth - document.documentElement.clientWidth,
+      );
+      expect(overflow, `${path} overflows by ${overflow}px at ${width}px`).toBe(0);
+    }
+  }
+});
+
 test('security headers are present on the response', async ({ page }) => {
   const resp = await page.goto('/');
   const h = resp!.headers();
