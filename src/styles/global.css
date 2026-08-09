@@ -181,6 +181,11 @@ body {
   border-top: 2px solid var(--color-rule);
 }
 
+.prose code {
+  /* long unbreakable tokens (hostnames, paths) must not widen the page */
+  overflow-wrap: anywhere;
+}
+
 .prose blockquote {
   border-left: 3px solid var(--color-brand);
   padding-left: 1.2em;
