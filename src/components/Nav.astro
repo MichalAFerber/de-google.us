@@ -11,12 +11,13 @@ const isActive = (href: string) => (href === '/' ? path === '/' : path === href)
 ---
 
 <nav class="border-b border-[var(--color-rule)] bg-[var(--color-paper)]/90 backdrop-blur sticky top-0 z-50">
-  <div class="mx-auto flex max-w-3xl flex-wrap items-center justify-between gap-x-4 gap-y-1 px-5 py-3">
+  <div class="mx-auto flex max-w-3xl items-center justify-between gap-x-4 px-5 py-3">
     <a href="/" class="font-display text-base font-bold tracking-wide text-[var(--color-brand-dark)] no-underline sm:text-lg">
       de-google<span class="text-[var(--color-ink-muted)]">.us</span>
     </a>
 
-    <div class="flex flex-wrap items-center justify-end gap-1 text-sm sm:gap-2">
+    <div class="flex items-center gap-1 text-sm sm:gap-2">
+      <div class="hidden items-center gap-1 sm:flex sm:gap-2">
       <a href="/" class:list={["nav-link", { active: isActive('/') }]}>Home</a>
       <a href="/illusion-of-choice/" class:list={["nav-link", { active: isActive('/illusion-of-choice') }]}>Why</a>
       <a href="/start-here/" class:list={["nav-link", { active: isActive('/start-here') }]}>Start&nbsp;Here</a>
@@ -34,7 +35,6 @@ const isActive = (href: string) => (href === '/' ? path === '/' : path === href)
         </ul>
       </details>
 
-      <div class="flex items-center gap-1 sm:gap-2">
       <a
         href="https://github.com/MichalAFerber/de-google.us"
         target="_blank"
@@ -46,6 +46,7 @@ const isActive = (href: string) => (href === '/' ? path === '/' : path === href)
           <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.33-1.76-1.33-1.76-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .1-.78.42-1.31.76-1.61-2.66-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.11-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6.01 0c2.28-1.55 3.29-1.23 3.29-1.23.65 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58C20.57 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z" />
         </svg>
       </a>
+      </div>
 
       <button id="theme-toggle" type="button" class="nav-link theme-toggle" aria-label="Toggle dark mode" aria-pressed="false">
         <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -56,7 +57,36 @@ const isActive = (href: string) => (href === '/' ? path === '/' : path === href)
           <path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path>
         </svg>
       </button>
-      </div>
+
+      <details class="mobile-menu relative sm:hidden">
+        <summary class="nav-link icon-link cursor-pointer list-none select-none" aria-label="Menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </summary>
+        <ul class="absolute right-0 mt-2 max-h-[calc(100dvh-5rem)] w-64 overflow-y-auto rounded-md border border-[var(--color-rule)] bg-[var(--color-paper)] p-1 shadow-lg">
+          <li>
+            <a href="/" class:list={["menu-link", { active: isActive('/') }]}>Home</a>
+          </li>
+          <li>
+            <a href="/illusion-of-choice/" class:list={["menu-link", { active: isActive('/illusion-of-choice') }]}>Why</a>
+          </li>
+          <li>
+            <a href="/start-here/" class:list={["menu-link", { active: isActive('/start-here') }]}>Start Here</a>
+          </li>
+          <li aria-hidden="true" class="mx-3 my-1 border-t border-[var(--color-rule)]"></li>
+          <li class="px-3 pb-1 pt-2 text-xs font-semibold uppercase tracking-wide text-[var(--color-ink-muted)]">Guides</li>
+          {guides.map((g) => (
+            <li>
+              <a href={`/${g.id}/`} class:list={["menu-link", { active: isActive(`/${g.id}`) }]}>{g.data.title}</a>
+            </li>
+          ))}
+          <li aria-hidden="true" class="mx-3 my-1 border-t border-[var(--color-rule)]"></li>
+          <li>
+            <a href="https://github.com/MichalAFerber/de-google.us" target="_blank" rel="noopener" class="menu-link">GitHub</a>
+          </li>
+        </ul>
+      </details>
     </div>
   </div>
 </nav>
@@ -97,15 +127,30 @@ const isActive = (href: string) => (href === '/' ? path === '/' : path === href)
   .nav-link.active {
     color: var(--color-brand-dark);
   }
-  /* No-JS accessible dropdown via <details> */
-  .guides summary::-webkit-details-marker {
+  /* No-JS accessible dropdowns via <details> */
+  .guides summary::-webkit-details-marker,
+  .mobile-menu summary::-webkit-details-marker {
     display: none;
+  }
+  .menu-link {
+    display: block;
+    border-radius: 0.25rem;
+    padding: 0.5rem 0.75rem;
+    color: var(--color-ink);
+    text-decoration: none;
+  }
+  .menu-link:hover {
+    background: color-mix(in srgb, var(--color-rule) 50%, transparent);
+  }
+  .menu-link.active {
+    color: var(--color-brand-dark);
+    font-weight: 600;
   }
 </style>
 
 <script>
-  // Close the Guides dropdown on outside-click / Escape.
-  document.querySelectorAll<HTMLDetailsElement>('details.guides').forEach((d) => {
+  // Close the Guides dropdown and mobile menu on outside-click / Escape.
+  document.querySelectorAll<HTMLDetailsElement>('details.guides, details.mobile-menu').forEach((d) => {
     document.addEventListener('click', (e) => {
       if (d.open && !d.contains(e.target as Node)) d.open = false;
     });

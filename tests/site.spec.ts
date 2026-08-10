@@ -99,6 +99,34 @@ test('no horizontal overflow at mobile widths', async ({ page }) => {
   }
 });
 
+test('nav collapses to a hamburger menu on mobile', async ({ page }) => {
+  await page.setViewportSize({ width: 375, height: 800 });
+  await page.goto('/');
+
+  // Inline links are hidden; the hamburger opens a panel with all destinations.
+  const summary = page.locator('details.mobile-menu summary');
+  await expect(summary).toBeVisible();
+  await expect(page.locator('nav a.nav-link', { hasText: 'Start Here' })).toBeHidden();
+
+  await summary.click();
+  const panel = page.locator('details.mobile-menu ul');
+  await expect(panel.locator('a', { hasText: 'Start Here' })).toBeVisible();
+  await expect(panel.locator('a', { hasText: 'GitHub' })).toBeVisible();
+
+  // The open panel must not widen the page.
+  const overflow = await page.evaluate(
+    () => document.documentElement.scrollWidth - document.documentElement.clientWidth,
+  );
+  expect(overflow).toBe(0);
+
+  // Outside-click closes it; desktop widths hide the hamburger entirely.
+  await page.mouse.click(10, 700);
+  await expect(panel).toBeHidden();
+  await page.setViewportSize({ width: 800, height: 800 });
+  await expect(summary).toBeHidden();
+  await expect(page.locator('nav a.nav-link', { hasText: 'Start Here' })).toBeVisible();
+});
+
 test('security headers are present on the response', async ({ page }) => {
   const resp = await page.goto('/');
   const h = resp!.headers();
